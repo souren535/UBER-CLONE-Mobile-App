@@ -5,6 +5,7 @@ import { icons, images } from "@/constants";
 import { useSignUp } from "@clerk/clerk-expo";
 import { Link, useRouter } from "expo-router";
 import { useState } from "react";
+import ReactNativeModal from "react-native-modal";
 import {
   Image,
   ScrollView,
@@ -156,7 +157,14 @@ export default function SignUp() {
         </View>
 
         {/* verification modal */}
-        
+        <ReactNativeModal isVisible={Verification.state === "success"}>
+          <View className="bg-white p-5 rounded-20">
+            <Image
+              source={images.check}
+              className="w-[110px] h-[110px] mx-auto my-5"
+            />
+          </View>
+        </ReactNativeModal>
       </View>
     </ScrollView>
   );
