@@ -18,7 +18,7 @@ export default function SignUp() {
   const { isLoaded, signUp, setActive } = useSignUp();
   const router = useRouter();
   const [Verification, setVerification] = useState({
-    state: "default",
+    state: "pending",
     error: "",
     code: "",
   });
@@ -157,11 +157,22 @@ export default function SignUp() {
         </View>
 
         {/* verification modal */}
-        <ReactNativeModal isVisible={Verification.state === "success"}>
+        <ReactNativeModal className="rounded-xl" isVisible={Verification.state === "success"}>
           <View className="bg-white p-5 rounded-20">
             <Image
               source={images.check}
               className="w-[110px] h-[110px] mx-auto my-5"
+            />
+            <Text className="text-3xl text-black font-JakartaBold text-center">
+              verified
+            </Text>
+            <Text className="text-base text-gray-500 text-center">
+              You have successfully verified your account
+            </Text>
+            <CustomButton
+              title="Browse Home"
+              className="mt-5"
+              onPress={() => router.replace("/(root)/(tabs)/home")}
             />
           </View>
         </ReactNativeModal>
